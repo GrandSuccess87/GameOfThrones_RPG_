@@ -1,0 +1,19 @@
+.characterArea {
+	display: flex;
+	margin-top: 5%;
+}
+
+img {
+	vertical-align: middle;
+    /* border-style: solid; */
+    border: 3px solid green;
+    width: 90%;
+    height: 60%;
+}
+
+.characterName,
+.characterHealthPoints {
+	text-align: -webkit-center;
+	font-family: "Amazon Ember", Arial, sans-serif;
+  	font-weight: 800;
+}
