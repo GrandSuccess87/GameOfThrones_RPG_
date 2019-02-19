@@ -41,6 +41,7 @@ const characters = {
 function createCharacterCard (character, cardArea) {
 	// Create a div for each character's card containing name, healthPoints, and image.
 	const $characterDiv = $("<div>", {"class": "characters"});
+	$characterDiv.attr("data-name", character.name);
 	const $characterName = $("<p>");
 	$characterName.attr("class", "characterName");
 	$characterName.text(character.name);
@@ -62,10 +63,21 @@ function createCharacter () {
 }
 
 createCharacter();
+
+const setCharacterSelection = function (enemyArray) {
+	// alert( "Handler for .click() called.");
+	enemyArray.forEach(function(enemyChar) {
+		// enemyArray.push(enemyChar);
+		createCharacterCard(enemyChar, "#enemyArea");
+	
+	})
+};
+
+// setCharacterSelection(yourCharacter, "#enemyArea");
 // Now I need to declare my variables and create an onclick event for the character cards so that the selected character remains and the rest gets pushed into an array and appends to the 'enemies to attack' div. 
 let yourCharacter;
 const enemies = [];
-const attacker = false; // this is the defender 
+let defender; // this is the opponent
 // const healthPoints;
 // const enemyAttackBackPoints;
 
@@ -78,30 +90,27 @@ const attacker = false; // this is the defender
 
 $("#characterArea").on("click", ".characters", function() {
 	console.log('character selected...');
+	// Stores clicked character's name
+	const name = $(this).attr("data-name");
+	console.log(name);
+	// Runs if your player has not been selected
 	if(!yourCharacter) {
+
+		yourCharacter = name;
+		console.log(`Your character is ${yourCharacter}`);
+
 		for(var key in characters) {
-		yourCharacter = characters[key].name;
-		console.log(yourCharacter);
-		console.log(`Your character is ${characters[key].name}`);
-		// console.log(characters[key]);
-		if(key !== name )
-			enemies.push(characters[key].name);
-			console.log(`enemies ${enemies}`);
+
+
+			if(characters[key].name !== name)
+				enemies.push(characters[key].name);
+				console.log(`enemies ${enemies}`);
 		}
+		// setCharacterSelection(enemies, "#enemyArea");
 	}
 });
 
-// function setCharacterSelection (enemy, enemyArea) {
-// 	// console.log('character selected...');
-// 	// alert( "Handler for .click() called.");
-// 	enemies.push(enemy);
-// 	// console.log(`enemies ${enemies}`);
-// 	enemies.forEach(function(enemyChar) {
-// 	$(enemyArea).append(enemyChar);
-// 	})
-// }
 
-// setCharacterSelection(yourCharacter, "#enemyArea");
 
 // Likewise I need to create another onclick event for the characters that are in the 'enemies to attack div' and when one is selected it appends to the 'defender' div and the rest remain in the 'enemies to attack' div.
 
