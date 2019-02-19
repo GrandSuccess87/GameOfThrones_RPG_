@@ -3,14 +3,22 @@
 	margin-top: 5%;
 }
 
+/*#enemyArea {
+	display: flex;
+	/*margin-top: 5%;*/
+/*}*/
+
 img {
 	vertical-align: middle;
     /* border-style: solid; */
     border: 3px solid green;
-    width: 90%;
+    width: 95%;
     height: 60%;
 }
 
+/*.characterImage {
+	flex-shrink: 0;
+}*/
 .characterName,
 .characterHealthPoints {
 	text-align: -webkit-center;

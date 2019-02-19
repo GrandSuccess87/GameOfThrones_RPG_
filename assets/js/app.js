@@ -64,16 +64,6 @@ function createCharacter () {
 
 createCharacter();
 
-const setCharacterSelection = function (enemyArray) {
-	// alert( "Handler for .click() called.");
-	enemyArray.forEach(function(enemyChar) {
-		// enemyArray.push(enemyChar);
-		createCharacterCard(enemyChar, "#enemyArea");
-	
-	})
-};
-
-// setCharacterSelection(yourCharacter, "#enemyArea");
 // Now I need to declare my variables and create an onclick event for the character cards so that the selected character remains and the rest gets pushed into an array and appends to the 'enemies to attack' div. 
 let yourCharacter;
 const enemies = [];
@@ -81,15 +71,21 @@ let defender; // this is the opponent
 // const healthPoints;
 // const enemyAttackBackPoints;
 
-// $( ".characters" ).click(function() {
 
-// 	$("#enemyArea").append($(".characters"));
-// 	// setCharacterSelection(".characters", "#enemyArea");
-// 	console.log('character clicked to enemy area');
-// });
+function setCharacterSelection (enemyArray) {
+	console.log("setCharacterSelection function!");
+	enemyArray.forEach(function(enemyCard) {
+		console.log("move the enemies!");
+		console.log(enemyCard);
+		createCharacterCard(enemyArray, "#enemyArea");
+		console.log("enemies moved!");
+		$("#header-text").text("Your Character");		
+	})
+};
+
 
 $("#characterArea").on("click", ".characters", function() {
-	console.log('character selected...');
+	console.log("character selected...");
 	// Stores clicked character's name
 	const name = $(this).attr("data-name");
 	console.log(name);
@@ -103,11 +99,11 @@ $("#characterArea").on("click", ".characters", function() {
 
 
 			if(characters[key].name !== name)
-				enemies.push(characters[key].name);
+				enemies.push(characters[key]);
 				console.log(`enemies ${enemies}`);
 		}
-		// setCharacterSelection(enemies, "#enemyArea");
 	}
+	setCharacterSelection(enemies);
 });
 
 
