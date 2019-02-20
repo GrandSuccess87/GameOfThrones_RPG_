@@ -77,7 +77,7 @@ function setCharacterSelection (enemyArray) {
 	enemyArray.forEach(function(enemyCard) {
 		console.log("move the enemies!");
 		console.log(enemyCard);
-		createCharacterCard(enemyArray, "#enemyArea");
+		createCharacterCard(enemyCard, "#enemyArea");
 		console.log("enemies moved!");
 		$("#header-text").text("Your Character");		
 	})
